@@ -23,6 +23,7 @@ python/memory.json
 *.jpg
 *.png
 *.gif
+!assets/
 
 # Electron/OS specific
 .DS_Store

@@ -2,7 +2,7 @@
 
 **ASTRA-OS** is a Jarvis-style desktop assistant built with **Electron** and **Python**. It features a futuristic UI, voice command capabilities, app automation, and a multi-layered security system including Face Unlock.
 
-![ASTRA-OS Interface](ui/index.html) *(Screenshot placeholder)*
+![ASTRA-OS Interface](assets/screenshot.png)
 
 ## ✨ Features
 
