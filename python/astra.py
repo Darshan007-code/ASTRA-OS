@@ -89,8 +89,8 @@ def save_memory():
 memory = load_memory()
 
 # ================= SPOTIFY =================
-SPOTIFY_CLIENT_ID = "fef7299bdf284c0f9be72136ae00cffb"
-SPOTIFY_CLIENT_SECRET = "ea9a2fdde60d4e4ba24450ac4e8fb197"
+SPOTIFY_CLIENT_ID = "YOUR_CLIENT_ID"
+SPOTIFY_CLIENT_SECRET = "YOUR_CLIENT_SECRET"
 SPOTIFY_REDIRECT_URI = "http://127.0.0.1:8888/callback"
 scope = "user-read-playback-state,user-modify-playback-state"
 
@@ -255,7 +255,7 @@ def telemetry_monitor():
         time.sleep(2)
 
 # ================= PHASE 6 - LIVE UPDATES =================
-NEWS_API_KEY = "4bd26ad060c14b8f9d3d482488c7c7c7"
+NEWS_API_KEY = "YOUR_NEWS_API_KEY"
 
 def news_monitor():
     while True:
@@ -273,7 +273,7 @@ def news_monitor():
         except: pass
         time.sleep(60)
 
-CRICKET_API_KEY = "c6efad1f-8097-48bb-8799-f1729d6f5415"
+CRICKET_API_KEY = "YOUR_CRICKET_API_KEY"
 
 def cricket_monitor():
     while True:
