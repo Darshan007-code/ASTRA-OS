@@ -1,47 +1,50 @@
 // ASTRA OS - RENDERER CORE
-const { onOutput, onState, onFaceAttempt, onFaceCapture, sendPin, saveFrame } = window.astra;
+const isWeb = !window.astra;
+const astra = window.astra || {
+    onOutput: () => {},
+    onState: () => {},
+    onFaceAttempt: () => {},
+    onFaceCapture: () => {},
+    sendPin: () => {},
+    saveFrame: () => {}
+};
+
+const { onOutput, onState, onFaceAttempt, onFaceCapture, sendPin, saveFrame } = astra;
 
 // UI Elements - Screens
 const bootScreen = document.getElementById('bootScreen');
 const securityLayer = document.getElementById('securityLayer');
 const astraHUD = document.getElementById('astraHUD');
 
-// UI Elements - Auth Boxes
-const faceScan = document.getElementById('faceScan');
-const voiceAuth = document.getElementById('voiceAuth');
-const pinAuth = document.getElementById('pinAuth');
-const lockScreen = document.getElementById('lockScreen');
-
-// UI Elements - Dynamic Data
-const astraResponse = document.getElementById('astraResponse');
-const commandLog = document.getElementById('commandLog');
-const faceStatus = document.getElementById('faceStatus');
-const faceAttempts = document.getElementById('faceAttempts');
-const lockTimer = document.getElementById('lockTimer');
-const micIndicator = document.getElementById('micIndicator');
-const cameraFeed = document.getElementById('cameraFeed');
-const freezeFrame = document.getElementById('freezeFrame');
-
-// Stats
-const cpuUsage = document.getElementById('cpuUsage');
-const ramUsage = document.getElementById('ramUsage');
-const diskUsage = document.getElementById('diskUsage');
-
-let cameraStream = null;
-let frameCaptureInterval = null;
+// ... (rest of element selections)
 
 // ---------------- BOOT SEQUENCE ----------------
-setTimeout(() => {
-    bootScreen.style.opacity = '0';
+if (isWeb) {
+    // WEB DEPLOYMENT: SKIP BOOT & SECURITY
+    bootScreen.classList.add('hidden');
+    securityLayer.classList.add('hidden');
+    astraHUD.classList.remove('hidden');
+    initializeHUD();
+    
+    // Fill dummy data for web preview
+    document.getElementById('cpuUsage').innerText = "12%";
+    document.getElementById('ramUsage').innerText = "45%";
+    document.getElementById('diskUsage').innerText = "28%";
+    document.getElementById('astraResponse').innerText = "WEB PREVIEW MODE: OFFLINE";
+    updateCommandLog("SYSTEM", "Astra-OS Web Interface Loaded.");
+} else {
     setTimeout(() => {
-        bootScreen.classList.add('hidden');
-        securityLayer.classList.remove('hidden');
-        
-        // AUTO-START CAMERA ON BOOT
-        console.log("BOOT COMPLETE: INITIALIZING CAMERA");
-        startCamera();
-    }, 500);
-}, 4500);
+        bootScreen.style.opacity = '0';
+        setTimeout(() => {
+            bootScreen.classList.add('hidden');
+            securityLayer.classList.remove('hidden');
+            
+            // AUTO-START CAMERA ON BOOT
+            console.log("BOOT COMPLETE: INITIALIZING CAMERA");
+            startCamera();
+        }, 500);
+    }, 4500);
+}
 
 // ---------------- CAMERA & FRAME CAPTURE ----------------
 function startCamera() {
