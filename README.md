@@ -63,11 +63,19 @@
     npm install
     ```
 
-4.  **Configure API Keys (Optional):**
-    Edit `python/astra.py` to add your own keys for:
-    -   `SPOTIFY_CLIENT_ID` / `SECRET`
-    -   `NEWS_API_KEY`
-    -   `CRICKET_API_KEY`
+4.  **Configure API Keys:**
+    To enable all features, you must add your own API keys in `python/astra.py`.
+    -   **Spotify:** Get your `CLIENT_ID` and `CLIENT_SECRET` from the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard). Set the Redirect URI to `http://127.0.0.1:8888/callback`.
+    -   **News:** Get your key from [NewsAPI.org](https://newsapi.org/).
+    -   **Cricket:** Get your key from [CricAPI.com](https://www.cricapi.com/).
+
+    Open `python/astra.py` and replace the following placeholders:
+    ```python
+    SPOTIFY_CLIENT_ID = "YOUR_CLIENT_ID"
+    SPOTIFY_CLIENT_SECRET = "YOUR_CLIENT_SECRET"
+    NEWS_API_KEY = "YOUR_NEWS_API_KEY"
+    CRICKET_API_KEY = "YOUR_CRICKET_API_KEY"
+    ```
 
 ### Running the App
 
