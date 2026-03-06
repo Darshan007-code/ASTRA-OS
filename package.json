@@ -1,0 +1,24 @@
+{
+  "name": "astra-os",
+  "version": "1.0.0",
+  "description": "Jarvis-style desktop assistant with voice commands, app automation, and face unlock",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "python:deps": "python -m pip install -r python/requirements.txt"
+  },
+  "keywords": [
+    "assistant",
+    "jarvis",
+    "electron",
+    "python",
+    "voice",
+    "automation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^40.6.1"
+  }
+}

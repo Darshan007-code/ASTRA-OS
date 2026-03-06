@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTRA OS - Master Build</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- OVERLAY SCANLINES -->
+    <div class="scanlines"></div>
+
+    <!-- BOOT SCREEN -->
+    <div id="bootScreen" class="screen">
+        <div class="loader-box">
+            <div class="glitch" data-text="ASTRA AI SYSTEM">ASTRA AI SYSTEM</div>
+            <div class="loading-bar"><div class="loading-fill"></div></div>
+            <p id="bootStatus">INITIALIZING CORE KERNEL...</p>
+        </div>
+    </div>
+
+    <!-- SECURITY SCREENS (FACE, VOICE, PIN) -->
+    <div id="securityLayer" class="screen hidden">
+        <div class="security-box">
+            <div id="securityHeader">SECURITY PROTOCOL 1.1</div>
+            
+            <!-- Face Scan -->
+            <div id="faceScan" class="auth-box">
+                <div class="scanner-frame">
+                    <div class="scanner-line"></div>
+                    <video id="cameraFeed" autoplay muted class="avatar-glow"></video>
+                    <!-- ANALYZED IMAGE OVERLAY -->
+                    <img id="freezeFrame" class="avatar-glow hidden" style="position: absolute; top:0; left:0; z-index: 4;">
+                </div>
+                <h2 id="faceStatus">VERIFYING IDENTITY...</h2>
+                <p id="faceAttempts">ATTEMPTS: 0 / 3</p>
+            </div>
+
+            <!-- Voice Authentication -->
+            <div id="voiceAuth" class="auth-box hidden">
+                <h2>VOICE AUTHENTICATION</h2>
+                <div class="voice-wave-container">
+                    <canvas id="voiceWave"></canvas>
+                </div>
+                <p id="voiceInstruction">SAY EMERGENCY PASSPHRASE</p>
+                <div id="voiceResult"></div>
+            </div>
+
+            <!-- PIN Authentication -->
+            <div id="pinAuth" class="auth-box hidden">
+                <h2>ENTER SECURITY PIN</h2>
+                <div class="pin-input-group">
+                    <input type="password" id="pinInput" maxlength="4" placeholder="****">
+                    <button id="pinBtn">AUTHENTICATE</button>
+                </div>
+                <p id="pinStatus">PROTECTED BY ASTRA ENCRYPTION</p>
+            </div>
+
+            <!-- System Lock -->
+            <div id="lockScreen" class="auth-box hidden">
+                <div class="lock-icon"></div>
+                <h1 class="red-glow">SYSTEM LOCKED</h1>
+                <p>INTRUSION DETECTED. RETRYING IN...</p>
+                <div id="lockTimer">30</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN AI HUD -->
+    <div id="astraHUD" class="screen hidden">
+        <!-- TOP HUD -->
+        <header class="hud-top">
+            <div class="system-stats">
+                <div class="stat-item">CPU: <span id="cpuUsage">0%</span></div>
+                <div class="stat-item">RAM: <span id="ramUsage">0%</span></div>
+                <div class="stat-item">DISK: <span id="diskUsage">0%</span></div>
+            </div>
+            <div class="system-clock" id="systemClock">00:00:00</div>
+            <div class="system-date" id="systemDate">04 MARCH 2026</div>
+        </header>
+
+        <!-- CENTER HUD -->
+        <main class="hud-center">
+            <div class="ai-orb">
+                <div class="ring outer-ring"></div>
+                <div class="ring inner-ring"></div>
+                <div class="ring core-ring"></div>
+                <!-- AI CORE REPLACING IMAGE -->
+                <div class="ai-core">
+                    <div class="core-inner"></div>
+                    <div class="core-pulse"></div>
+                </div>
+            </div>
+            <div id="astraResponse" class="response-text">AWAITING COMMAND...</div>
+        </main>
+
+        <!-- SIDEBARS -->
+        <aside class="hud-sidebar left">
+            <div class="sidebar-header">USER PREFERENCES</div>
+            <div id="userPrefs">
+                <div class="pref-item">GOAL: BUILD AI</div>
+                <div class="pref-item">FAV: KGF</div>
+            </div>
+        </aside>
+
+        <aside class="hud-sidebar right">
+            <div class="sidebar-header">COMMAND LOG</div>
+            <div id="commandLog"></div>
+        </aside>
+
+        <!-- BOTTOM HUD -->
+        <footer class="hud-bottom">
+            <div class="mic-status">
+                <div id="micIndicator" class="mic-off"></div>
+                <span>LISTENING...</span>
+            </div>
+            
+            <!-- LIVE TICKER -->
+            <div class="hud-ticker">
+                <div id="newsTicker" class="ticker-item">FEEDS: CONNECTING TO NEWS ORBIT...</div>
+                <div id="cricketTicker" class="ticker-item">SPORTS: AWAITING LIVE DATA...</div>
+            </div>
+
+            <div class="internet-status">NET: <span id="netStatus">ONLINE</span></div>
+        </footer>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

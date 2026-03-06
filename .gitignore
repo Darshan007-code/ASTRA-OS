@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Python Virtual Environments
+.venv/
+python/venv/
+
+# Caches
+.cache
+python/.cache
+__pycache__/
+
+# Session Data
+intruders/
+python/intruders/
+python/face_data/
+python/temp.wav
+python/security_log.txt
+python/memory.json
+
+# Image/Audio files (unless needed for UI)
+*.wav
+*.jpg
+*.png
+*.gif
+
+# Electron/OS specific
+.DS_Store
+dist/
+out/
